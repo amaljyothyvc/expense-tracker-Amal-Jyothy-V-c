@@ -1,37 +1,28 @@
-**Live website:** [Open Expense Tracker](https://amaljyothyvc.github.io/expense-tracker-Amal-Jyothy-V-c/)
-
 # Expense Tracker
 
-A responsive browser-based expense tracker built with HTML, CSS, and JavaScript. No installation or build step is required.
+## Live website
 
-## Run without Git
+[Open the Expense Tracker](https://amaljyothyvc.github.io/expense-tracker-Amal-Jyothy-V-c/)
 
-1. Open this repository on GitHub.
-2. Select **Code → Download ZIP**.
-3. Extract the downloaded ZIP file.
-4. Open the extracted folder and double-click **`index.html`**. The app opens in your browser.
+The app is hosted on GitHub Pages. Open the link above to use it in a browser—no installation is needed.
 
-## Run with a local server (optional)
+## About the project
 
-From the project directory, run:
-
-```bash
-python3 -m http.server 8000
-```
-
-Then visit <http://localhost:8000>.
+A responsive personal expense tracker built with HTML, CSS, and JavaScript. It helps users record income and expenses, review their balance, and understand monthly spending.
 
 ## Features
 
 - Add, edit, and delete income and expense transactions.
-- Record amount, category, date, and description, with inline validation.
+- Record each transaction’s amount, category, date, and description, with form validation.
 - View total income, total expenses, and current balance.
-- Filter by transaction type or category and search transactions.
-- See a six-month income/expense chart and a monthly category-wise expense summary.
-- Save data in browser `localStorage` so it remains after refreshing the page.
-- Responsive layout for desktop and mobile screens.
+- Search transactions and filter by type or category.
+- Review a six-month income-versus-expenses chart and a monthly category-wise expense summary.
+- Keep transactions after refreshing the page using browser `localStorage`.
+- Use the responsive layout on desktop and mobile screens.
 
-Amounts are displayed in USD. Transaction data stays in the current browser on the current device; clearing browser storage or switching devices will not transfer it.
+## Data storage
+
+Amounts are displayed in USD. Transactions are saved in the current browser on the current device; they are not synced across browsers or devices.
 
 ## Project files
 
