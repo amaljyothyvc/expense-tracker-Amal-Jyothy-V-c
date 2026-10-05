@@ -764,18 +764,7 @@ tbody td {
   display: block;
 }
 .empty-orbit {
-  width: 44px;
-  height: 44px;
-  margin: 0 auto 10px;
-  border: 1px solid #dfe9df;
-  background: #f2f7f2;
-  border-radius: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--green);
-  font-size: 22px;
-  transform: rotate(-7deg);
+  display: none;
 }
 .empty-state h3 {
   font-family: Manrope, sans-serif;
