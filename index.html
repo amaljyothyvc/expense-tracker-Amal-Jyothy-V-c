@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f7f4" />
+    <meta
+      name="description"
+      content="A calm, simple expense tracker that keeps your money in focus."
+    />
+    <title>Clear Ledger — Personal finance, in focus</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Main navigation">
+        <a class="brand" href="#main" aria-label="Clear Ledger home">
+          <span class="brand-mark" aria-hidden="true"
+            ><span></span><span></span><span></span
+          ></span>
+          <span>clear<span class="brand-light">ledger</span></span>
+        </a>
+        <p class="nav-caption">WORKSPACE</p>
+        <a class="nav-link active" href="#overview"
+          ><span class="nav-icon" aria-hidden="true">▦</span> Overview</a
+        >
+        <a class="nav-link" href="#transactions"
+          ><span class="nav-icon" aria-hidden="true">↕</span> Transactions</a
+        >
+        <a class="nav-link" href="#insights"
+          ><span class="nav-icon" aria-hidden="true">◷</span> Insights</a
+        >
+        <div class="sidebar-note">
+          <span class="note-spark" aria-hidden="true">✳</span>
+          <p class="note-title">Small steps add up.</p>
+          <p class="note-copy">
+            Keep a clear picture of where your money goes.
+          </p>
+        </div>
+        <div class="sidebar-footer">
+          <span class="privacy-dot" aria-hidden="true"></span> Your data stays
+          on this device
+        </div>
+      </aside>
+
+      <main id="main" class="main-content">
+        <header class="topbar">
+          <a
+            class="brand mobile-brand"
+            href="#main"
+            aria-label="Clear Ledger home"
+          >
+            <span class="brand-mark" aria-hidden="true"
+              ><span></span><span></span><span></span
+            ></span>
+            <span>clear<span class="brand-light">ledger</span></span>
+          </a>
+          <div class="topbar-context">
+            <span class="context-dot" aria-hidden="true"></span> PERSONAL SPACE
+          </div>
+          <button class="avatar" type="button" aria-label="Personal account">
+            Y
+          </button>
+        </header>
+
+        <section id="overview" class="page-heading">
+          <div>
+            <p class="eyebrow" id="today-label">YOUR MONEY, AT A GLANCE</p>
+            <h1>A little more <em>clarity.</em></h1>
+            <p class="heading-copy">
+              Your finances, gathered in one calm place.
+            </p>
+          </div>
+          <button
+            class="button button-primary"
+            id="add-transaction"
+            type="button"
+          >
+            <span aria-hidden="true">＋</span> Add transaction
+          </button>
+        </section>
+
+        <section class="summary-grid" aria-label="Account totals">
+          <article class="summary-card balance-card">
+            <div class="card-topline">
+              <span>Current balance</span
+              ><span class="metric-icon balance-icon" aria-hidden="true"
+                >↗</span
+              >
+            </div>
+            <p class="metric-value" id="balance-total">$0.00</p>
+            <p class="metric-footnote">Income minus expenses</p>
+          </article>
+          <article class="summary-card income-card">
+            <div class="card-topline">
+              <span>Total income</span
+              ><span class="metric-icon income-icon" aria-hidden="true">↓</span>
+            </div>
+            <p class="metric-value" id="income-total">$0.00</p>
+            <p class="metric-footnote">
+              <span class="tiny-indicator green"></span> Across all transactions
+            </p>
+          </article>
+          <article class="summary-card expense-card">
+            <div class="card-topline">
+              <span>Total expenses</span
+              ><span class="metric-icon expense-icon" aria-hidden="true"
+                >↑</span
+              >
+            </div>
+            <p class="metric-value" id="expense-total">$0.00</p>
+            <p class="metric-footnote">
+              <span class="tiny-indicator coral"></span> Across all transactions
+            </p>
+          </article>
+        </section>
+
+        <section
+          class="insights-grid"
+          id="insights"
+          aria-label="Monthly spending insights"
+        >
+          <article class="panel trend-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">YOUR RHYTHM</p>
+                <h2>Monthly flow</h2>
+              </div>
+              <span class="legend"
+                ><span class="legend-dot legend-income"></span> Income
+                <span class="legend-dot legend-expense"></span> Expenses</span
+              >
+            </div>
+            <div
+              class="chart-wrap"
+              id="monthly-chart"
+              aria-label="Monthly income and expenses chart"
+            ></div>
+            <div class="chart-foot">
+              <span>Last 6 months</span
+              ><span id="chart-summary"
+                >Add transactions to see your monthly flow</span
+              >
+            </div>
+          </article>
+          <article class="panel categories-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">THIS MONTH</p>
+                <h2>Where it goes</h2>
+              </div>
+              <span class="category-total" id="month-expense-total">$0</span>
+            </div>
+            <div class="category-list" id="category-summary"></div>
+            <p class="category-empty" id="category-empty">
+              Your spending categories will appear here.
+            </p>
+          </article>
+        </section>
+
+        <section class="panel transactions-panel" id="transactions">
+          <div class="transactions-heading">
+            <div>
+              <p class="eyebrow">THE DETAILS</p>
+              <h2>
+                Recent transactions
+                <span class="count-pill" id="transaction-count">0</span>
+              </h2>
+            </div>
+            <button
+              class="button button-outline"
+              id="add-transaction-secondary"
+              type="button"
+            >
+              <span aria-hidden="true">＋</span> Add new
+            </button>
+          </div>
+          <div class="filters" aria-label="Filter transactions">
+            <label class="search-field"
+              ><span class="sr-only">Search transactions</span
+              ><span aria-hidden="true">⌕</span
+              ><input
+                id="search-input"
+                type="search"
+                placeholder="Search transactions"
+                autocomplete="off"
+            /></label>
+            <label class="select-wrap"
+              ><span class="sr-only">Filter by type</span
+              ><select id="type-filter">
+                <option value="all">All types</option>
+                <option value="income">Income</option>
+                <option value="expense">Expenses</option>
+              </select></label
+            >
+            <label class="select-wrap"
+              ><span class="sr-only">Filter by category</span
+              ><select id="category-filter">
+                <option value="all">All categories</option>
+              </select></label
+            >
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">TRANSACTION</th>
+                  <th scope="col">CATEGORY</th>
+                  <th scope="col">DATE</th>
+                  <th scope="col" class="amount-heading">AMOUNT</th>
+                  <th scope="col"><span class="sr-only">Actions</span></th>
+                </tr>
+              </thead>
+              <tbody id="transaction-list"></tbody>
+            </table>
+            <div class="empty-state" id="empty-state">
+              <span class="empty-orbit" aria-hidden="true"
+                ><span>＋</span></span
+              >
+              <h3>A fresh page.</h3>
+              <p>
+                Add your first transaction to start seeing the full picture.
+              </p>
+              <button class="button button-soft" id="empty-add" type="button">
+                Add your first transaction
+              </button>
+            </div>
+          </div>
+        </section>
+        <footer class="page-footer">
+          <span>Made for a clearer view.</span
+          ><span
+            ><span class="privacy-dot" aria-hidden="true"></span> Saved
+            privately in your browser</span
+          >
+        </footer>
+      </main>
+    </div>
+
+    <dialog
+      class="transaction-dialog"
+      id="transaction-dialog"
+      aria-labelledby="dialog-title"
+    >
+      <form id="transaction-form" novalidate>
+        <div class="dialog-heading">
+          <div>
+            <p class="eyebrow">KEEP IT UP TO DATE</p>
+            <h2 id="dialog-title">Add a transaction</h2>
+          </div>
+          <button
+            class="icon-button close-dialog"
+            type="button"
+            aria-label="Close dialog"
+          >
+            ×
+          </button>
+        </div>
+        <div class="type-toggle" role="group" aria-label="Transaction type">
+          <button
+            type="button"
+            class="type-option selected"
+            data-type="expense"
+            aria-pressed="true"
+          >
+            <span aria-hidden="true">↗</span> Expense
+          </button>
+          <button
+            type="button"
+            class="type-option"
+            data-type="income"
+            aria-pressed="false"
+          >
+            <span aria-hidden="true">↙</span> Income
+          </button>
+        </div>
+        <input type="hidden" id="transaction-type" value="expense" />
+        <label class="field-label" for="amount">Amount</label>
+        <div class="amount-input">
+          <span aria-hidden="true">$</span
+          ><input
+            id="amount"
+            name="amount"
+            type="number"
+            inputmode="decimal"
+            min="0.01"
+            max="999999999"
+            step="0.01"
+            placeholder="0.00"
+            required
+          />
+        </div>
+        <p class="field-error" id="amount-error" aria-live="polite"></p>
+        <div class="form-row">
+          <div>
+            <label class="field-label" for="category">Category</label
+            ><select id="category" name="category" required></select>
+            <p class="field-error" id="category-error" aria-live="polite"></p>
+          </div>
+          <div>
+            <label class="field-label" for="date">Date</label
+            ><input id="date" name="date" type="date" required />
+            <p class="field-error" id="date-error" aria-live="polite"></p>
+          </div>
+        </div>
+        <label class="field-label" for="description">Description</label>
+        <input
+          id="description"
+          name="description"
+          type="text"
+          maxlength="80"
+          placeholder="e.g. Weekly groceries"
+          required
+        />
+        <p class="field-error" id="description-error" aria-live="polite"></p>
+        <div class="dialog-actions">
+          <button class="button button-outline close-dialog" type="button">
+            Cancel</button
+          ><button
+            class="button button-primary"
+            id="save-transaction"
+            type="submit"
+          >
+            Save transaction
+          </button>
+        </div>
+      </form>
+    </dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
