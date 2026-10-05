@@ -1,3 +1,5 @@
+**Live website:** [Open Expense Tracker](https://amaljyothyvc.github.io/expense-tracker-Amal-Jyothy-V-c/)
+
 # Expense Tracker
 
 A responsive browser-based expense tracker built with HTML, CSS, and JavaScript. No installation or build step is required.
